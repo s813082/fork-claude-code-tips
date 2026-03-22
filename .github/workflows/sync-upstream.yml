@@ -1,0 +1,48 @@
+name: Sync with Upstream
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天 UTC 00:00 執行
+  workflow_dispatch:       # 允許手動觸發
+
+jobs:
+  sync:
+    name: Sync fork with upstream
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check and sync with upstream
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 新增 upstream remote
+          git remote add upstream https://github.com/ykdojo/claude-code-tips.git
+
+          # 取得 upstream 最新資訊
+          git fetch upstream
+
+          # 取得預設分支名稱
+          DEFAULT_BRANCH=$(git remote show upstream | grep 'HEAD branch' | awk '{print $NF}')
+          echo "Upstream default branch: $DEFAULT_BRANCH"
+
+          # 確認本地分支是否落後 upstream
+          BEHIND=$(git rev-list --count HEAD..upstream/$DEFAULT_BRANCH)
+          echo "Commits behind upstream: $BEHIND"
+
+          if [ "$BEHIND" -gt 0 ]; then
+            echo "Fork is $BEHIND commit(s) behind upstream. Syncing..."
+            git merge upstream/$DEFAULT_BRANCH --ff-only || git merge upstream/$DEFAULT_BRANCH -m "chore: sync with upstream"
+            git push origin HEAD:$DEFAULT_BRANCH
+            echo "Sync complete."
+          else
+            echo "Fork is up to date with upstream. No sync needed."
+          fi
