@@ -1,4 +1,4 @@
-# 45 Claude Code Tips: From Basics to Advanced
+# 43 Claude Code Tips: From Basics to Advanced
 
 Here are my tips for getting the most out of Claude Code, including a custom status line script and Claude Code running itself in a container. Also includes the [dx plugin](#tip-42-install-the-dx-plugin).
 
