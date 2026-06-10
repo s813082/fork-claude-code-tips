@@ -516,6 +516,8 @@ This is useful for research or experimentation, things that take a long time and
 
 I even created [SafeClaw](https://github.com/ykdojo/safeclaw) to make running containerized Claude Code sessions easy. It lets you spin up multiple isolated sessions, each with a web terminal, and manage them all from a dashboard. It uses several customizations from this repo, including the [DX plugin](#tip-42-install-the-dx-plugin) and [status line](#tip-0-customize-your-status-line).
 
+There's also auto mode, which is a sensible default in general - Claude runs autonomously while a classifier reviews each command and only stops for risky ones. But this still doesn't remove the risks and the need for approval entirely, so for tasks where you want it to have complete independence, you can still use a container.
+
 ### Advanced: Orchestrating a worker Claude Code in a container
 
 You can take this further by having your local Claude Code control another Claude Code instance running inside a container. The trick is using tmux as the control layer:
