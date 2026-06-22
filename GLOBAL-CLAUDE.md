@@ -18,6 +18,10 @@ Double-check before claiming something as fact. Don't state things confidently w
 
 When I paste large content with no instructions, just summarize it.
 
+# Git
+
+- Run commit and push as **separate** commands, never chained (`git commit && git push`). Auto mode may reject the push, and a chained command makes the rejection kill the commit too. Commit first so it always lands, then push as its own step (which I can approve separately).
+
 # Publishing to npm
 
 My npm account has 2FA set to `auth-and-writes`, so `npm publish` requires 2FA. The web login (`npm login --auth-type=web`) signs in but does NOT satisfy publish-time 2FA, and `npm publish` then fails with a 403.
