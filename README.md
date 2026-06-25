@@ -263,6 +263,7 @@ Since I use the terminal more because of Claude Code, I found it helpful to set 
 
 - `c` for Claude Code (this is the one I use the most)
 - `ch` for Claude Code with Chrome integration
+- `cr` for `claude remote-control`, to start a server you can [drive from your phone](#tip-32-control-claude-code-from-your-phone)
 - `gb` for GitHub Desktop
 - `co` for VS Code
 - `q` for going to the project directory where I have most projects. From there I can manually cd into an individual folder to work on that project, or I can just launch Claude Code with `c` to let it basically have access to any project it needs to access.
@@ -272,6 +273,7 @@ To set these up, add lines like this to your shell config file (`~/.zshrc` or `~
 ```bash
 alias c='claude'
 alias ch='claude --chrome'
+alias cr='claude remote-control'
 alias gb='github'
 alias co='code'
 alias q='cd ~/Desktop/projects'
@@ -733,7 +735,7 @@ Remote Control lets you drive Claude Code from your phone, which pairs really we
 
 Run `/remote-control` inside an existing session, follow the instructions, and you can drive that same session from your phone. Because it's the same session, you can go back and forth between your phone and your computer.
 
-Or start a server with `claude remote-control --spawn=worktree --capacity=N`, which lets you start brand new sessions from your phone, not just attach to one you already have open. Here `--spawn=worktree` gives each new session its own git worktree so they don't step on each other, and `--capacity` sets how many can run at once.
+Or start a server with `claude remote-control --spawn=worktree --capacity=N`, which lets you start brand new sessions from your phone, not just attach to one you already have open. Here `--spawn=worktree` gives each new session its own git worktree so they don't step on each other, and `--capacity` sets how many can run at once. I have this [aliased](#tip-7-set-up-terminal-aliases-for-quick-access) to `cr`, so it's just `cr --spawn=worktree --capacity=N`.
 
 Docs: [Remote Control](https://code.claude.com/docs/en/remote-control).
 
