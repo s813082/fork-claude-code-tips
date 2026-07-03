@@ -965,7 +965,7 @@ Skip any? [e.g., 1 4 7 or Enter for all]:
 
 ## Tip 45: Switch between multiple Claude accounts
 
-If you have a work and a personal Claude account, here's how you can switch between the two quickly.
+If you have multiple Claude accounts (for example, personal vs work), here's how you can switch between them quickly.
 
 On macOS your login lives in a single Keychain entry, but the `CLAUDE_CODE_OAUTH_TOKEN` env var overrides it, so you can launch as a specific account.
 
