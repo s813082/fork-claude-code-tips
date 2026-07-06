@@ -521,7 +521,7 @@ Isolated environments are great for `--dangerously-skip-permissions` sessions wh
 
 There are two major ways of going about it:
 
-1. You can run it in a container. I even created [SafeClaw](https://github.com/ykdojo/safeclaw) to make running containerized Claude Code sessions easy. It lets you spin up multiple isolated sessions, each with a web terminal, and manage them all from a dashboard. It uses several customizations from this repo, including the [DX plugin](#tip-43-install-the-dx-plugin) and [status line](#tip-0-customize-your-status-line).
+1. You can run it in a container. I even created [a preset environment](https://github.com/ykdojo/safeclaw) to make running containerized Claude Code sessions easy.
 2. You can take it a step further by [setting up a whole machine Claude Code can fully control](https://github.com/ykdojo/claude-controls-mac), computer use included.
 
 There's also auto mode, which is a sensible default in general - Claude runs autonomously while a classifier reviews each command and only stops for risky ones. But this still doesn't remove the risks and the need for approval entirely, so for tasks where you want it to have complete independence, you can still use a container.
